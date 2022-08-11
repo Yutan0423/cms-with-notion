@@ -4,7 +4,7 @@ import { ArticleProps, Params } from '../../types/types';
 import { fetchBlocksByPageId, fetchPages } from '../../utils/notion';
 import { getText } from '../../utils/properties';
 import ArticleMeta from '../components/ArticleMeta';
-import { Layout } from '../components/Layout';
+import Layout from '../components/Layout';
 import NotionBlocks from 'notion-block-renderer';
 
 export const getStaticPaths: GetStaticPaths = async () => {

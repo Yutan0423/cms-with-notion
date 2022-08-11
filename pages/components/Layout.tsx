@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { LayoutProps } from '../../types/types';
-import { Footer } from './Footer';
-import { Navbar } from './Navbar';
+import Footer from './Footer';
+import Navbar from './Navbar';
 
-export const Layout: FC<LayoutProps> = ({ children }) => {
+const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <div className="relative overflow-hidden">
       <div className="flex flex-col items-center max-w-2xl w-full mx-auto">
@@ -14,3 +14,5 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
     </div>
   );
 };
+
+export default Layout;

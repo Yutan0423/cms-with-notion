@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { siteConfig } from '../../site.config';
 import BreadCrumb from './BreadCrumb';
 
-export const Navbar = () => {
+const Navbar = () => {
   return (
     <nav className="relative w-screen flex flex-wrap items-center justify-between py-3 bg-gray-900 text-white hover:text-gray-200 navbar navbar-expand-lg navbar-light">
       <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
@@ -21,3 +21,5 @@ export const Navbar = () => {
     </nav>
   );
 };
+
+export default Navbar;

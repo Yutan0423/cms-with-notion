@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { BlockProps } from '../../types/types';
 import { getText } from '../../utils/properties';
 
-export const Block: FC<BlockProps> = ({ block }) => {
+const Block: FC<BlockProps> = ({ block }) => {
   switch (block.type) {
     case 'heading_1':
       return <h1>{getText(block.heading_1.rich_text)}</h1>;
@@ -15,3 +15,5 @@ export const Block: FC<BlockProps> = ({ block }) => {
       return <></>;
   }
 };
+
+export default Block;
