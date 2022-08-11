@@ -17,6 +17,7 @@ export type PageProps = {
 };
 
 export type CardProps = { page: PageType };
+
 export type ArticleProps = {
   page: PageType;
   blocks: BlockType[];
@@ -25,10 +26,13 @@ export type ArticleMetaProps = CardProps;
 
 export type IndexProps = { pages: PageType[] };
 
+export type TagProps = IndexProps & { tag: string };
+
 export type BlockProps = { block: BlockType };
 
 export type Params = ParsedUrlQuery & {
   slug: string;
+  tag: string;
 };
 
 export type FileType = {
@@ -57,7 +61,7 @@ export type PropertyType = {
   slug: { rich_text: RichTextType[] };
   published: { date: { start: string } };
   isPublic: { checkbox: boolean };
-  tags: { multi_select: [{ name: string; color: string }] };
+  tags: { multi_select: [{ name: string }] };
 };
 
 export type PageType = {

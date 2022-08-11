@@ -5,7 +5,7 @@ import { CardProps } from '../../types/types';
 import {
   getCover,
   getDate,
-  getMultiselect,
+  getMultiSelect,
   getText,
 } from '../../utils/properties';
 
@@ -41,17 +41,18 @@ export const Card: FC<CardProps> = ({ page }) => {
 
           {/* tag */}
           <div className="px-6 pb-4 ">
-            {getMultiselect(page.properties.tags.multi_select).map(
+            {getMultiSelect(page.properties.tags.multi_select).map(
               (tag, key) => {
-                const bgColor = tag.color
-                  ? 'bg-' + tag.color + '-200'
-                  : 'bg-200-gray';
+                // tailwindうまく動かないのでコメントアウト
+                // const bgColor = tag.color
+                //   ? 'bg-' + tag.color + '-200'
+                //   : 'bg-200-gray';
                 return (
                   <span
                     key={key}
-                    className={`text-sm px-2 py-1 font-normal ${bgColor} rounded-lg break-words mr-2 mb-2`}
+                    className={`text-sm px-2 py-1 font-normal bg-purple-200 rounded-lg break-words mr-2 mb-2`}
                   >
-                    {`#${tag.name}`}
+                    {`#${tag}`}
                   </span>
                 );
               },

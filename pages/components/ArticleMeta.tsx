@@ -1,10 +1,11 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { FC } from 'react';
 import { ArticleMetaProps } from '../../types/types';
 import {
   getCover,
   getDate,
-  getMultiselect,
+  getMultiSelect,
   getText,
 } from '../../utils/properties';
 
@@ -41,12 +42,16 @@ const ArticleMeta: FC<ArticleMetaProps> = ({ page }) => {
           {/* tags */}
           <div className="col-span-1">Tags</div>
           <div className="col-span-2">
-            {getMultiselect(page.properties.tags.multi_select).map(
+            {getMultiSelect(page.properties.tags.multi_select).map(
               (tag, key) => (
-                <span key={key}>{`#${tag.name} `}</span>
+                <Link key={key} href={`/tags/${tag}`}>
+                  <span
+                    className="cursor-pointer text-sm px-2 py-1 font-normal bg-purple-200 rounded-lg break-words mr-2 mb-2"
+                    key={key}
+                  >{`#${tag}`}</span>
+                </Link>
               ),
             )}
-            <span>#tag</span>
           </div>
         </div>
       </div>

@@ -25,17 +25,9 @@ export const getDate = (date: { start: string }) => {
   return '-';
 };
 
-export const getMultiselect = (
-  multiSelect: [{ name: string; color: string }],
-) => {
+export const getMultiSelect = (multiSelect: [{ name: string }]) => {
   try {
-    return multiSelect.map((tag) => {
-      return {
-        name: tag.name,
-        color: tag.color,
-      };
-      // return tag.name;
-    });
+    return multiSelect.map((tag) => tag.name);
   } catch (err) {
     console.error(err);
   }
