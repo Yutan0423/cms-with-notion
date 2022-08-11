@@ -1,17 +1,9 @@
-import {
-  GetServerSideProps,
-  GetStaticPaths,
-  GetStaticProps,
-  NextPage,
-} from 'next';
-import Image from 'next/image';
-import path from 'path';
-import React, { FC } from 'react';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import React from 'react';
 import { ArticleProps, Params } from '../../types/types';
 import { fetchBlocksByPageId, fetchPages } from '../../utils/notion';
 import { getText } from '../../utils/properties';
 import ArticleMeta from '../components/ArticleMeta';
-import { Block } from '../components/Block';
 import { Layout } from '../components/Layout';
 import NotionBlocks from 'notion-block-renderer';
 

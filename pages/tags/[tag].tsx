@@ -1,10 +1,5 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import path from 'path';
-import { siteConfig } from '../../site.config';
-import { IndexProps, Params, TagProps } from '../../types/types';
-import { dummyCards } from '../../utils/dummy';
+import { Params, TagProps } from '../../types/types';
 import { fetchPages } from '../../utils/notion';
 import { getMultiSelect } from '../../utils/properties';
 import Card from './../components/Card';
