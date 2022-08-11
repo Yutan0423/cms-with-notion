@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { LayoutProps } from '../../types/types';
+import { LayoutProps } from '../types/types';
 import Footer from './Footer';
 import Navbar from './Navbar';
 

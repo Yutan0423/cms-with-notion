@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { siteConfig } from '../../site.config';
+import { siteConfig } from '../site.config';
 
 const Footer = () => {
   return (

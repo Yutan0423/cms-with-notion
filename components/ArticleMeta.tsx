@@ -1,22 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { FC } from 'react';
-import { ArticleMetaProps } from '../../types/types';
+import { ArticleMetaProps } from '../types/types';
 import {
   getCover,
   getDate,
   getMultiSelect,
   getText,
-} from '../../utils/properties';
+} from '../utils/properties';
 
 const ArticleMeta: FC<ArticleMetaProps> = ({ page }) => {
   return (
-    <div>
+    <>
       {/* page cover */}
       <Image
         className="w-full max-w-screen-lg rounded-lg aspect-video my-4"
         src={getCover(page.cover)}
-        alt={getText(page.properties.name.title)}
+        alt=""
         objectFit="cover"
         width={640}
         height={360}
@@ -42,20 +42,20 @@ const ArticleMeta: FC<ArticleMetaProps> = ({ page }) => {
           {/* tags */}
           <div className="col-span-1">Tags</div>
           <div className="col-span-2">
+            {/* change later */}
             {getMultiSelect(page.properties.tags.multi_select).map(
-              (tag, key) => (
-                <Link key={key} href={`/tags/${tag}`}>
-                  <span
-                    className="cursor-pointer text-sm px-2 py-1 font-normal bg-purple-200 rounded-lg break-words mr-2 mb-2"
-                    key={key}
-                  >{`#${tag}`}</span>
+              (tag: string, index: number) => (
+                <Link key={index} href={`/tags/${tag}`}>
+                  <a className="text-gray-700 no-underline border-b border-solid border-gray-700 opacity-70 mr-3">
+                    <span>{`#${tag}`}</span>
+                  </a>
                 </Link>
               ),
             )}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

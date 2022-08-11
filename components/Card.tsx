@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { FC } from 'react';
-import { CardProps } from '../../types/types';
+import { CardProps } from '../types/types';
 import {
   getCover,
   getDate,
   getMultiSelect,
   getText,
-} from '../../utils/properties';
+} from '../utils/properties';
 
 export const Card: FC<CardProps> = ({ page }) => {
   const path = getText(page.properties.slug.rich_text);
@@ -43,10 +43,6 @@ export const Card: FC<CardProps> = ({ page }) => {
           <div className="px-6 pb-4 ">
             {getMultiSelect(page.properties.tags.multi_select).map(
               (tag, key) => {
-                // tailwindうまく動かないのでコメントアウト
-                // const bgColor = tag.color
-                //   ? 'bg-' + tag.color + '-200'
-                //   : 'bg-200-gray';
                 return (
                   <span
                     key={key}
