@@ -17,10 +17,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Home: NextPage<IndexProps> = ({ pages }) => {
   return (
-    <Layout>
+    <Layout title="">
       <div className="pt-12">
-        <h1 className="text-5xl mb-8">{siteConfig.title}</h1>
-        <div className="grid md:gap-6 mt-10 md:grid-cols-2 w-full my-12">
+        <h1 className="mb-8 text-5xl">{siteConfig.title}</h1>
+        <div className="my-12 mt-10 grid w-full md:grid-cols-3 md:gap-6">
           {/* Card */}
           {pages.map((page, key) => (
             <Card key={key} page={page} />

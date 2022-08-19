@@ -1,5 +1,5 @@
 export const siteConfig = {
-  title: 'Notion Next Blog',
+  title: 'Notion CMS',
   twitterUrl: 'https://twitter.com/hametsuno',
   instagramUrl: '',
   githubUrl: 'https://github.com/Yutan0423',

@@ -3,19 +3,22 @@
 @tailwind utilities;
 
 h1 {
-  @apply font-semibold leading-tight text-4xl mt-0 mb-2;
+  @apply mt-0 mb-2 text-4xl font-semibold leading-tight text-gray-800;
 }
 h2 {
-  @apply font-semibold leading-tight text-3xl mt-0 mb-2;
+  @apply mt-0 mb-2 text-3xl font-semibold leading-tight text-gray-800;
 }
 h3 {
-  @apply font-semibold leading-tight text-2xl mt-0 mb-2;
+  @apply mt-0 mb-2 text-2xl font-semibold leading-tight text-gray-800;
 }
 p {
-  @apply font-light leading-relaxed text-base text-gray-800 mt-0 mb-4;
+  @apply mt-0 mb-4 text-base font-light leading-relaxed text-gray-800;
+}
+a {
+  @apply text-white no-underline;
 }
 main {
-  @apply min-h-screen flex flex-col justify-center items-center;
+  @apply flex min-h-screen flex-col items-center justify-center;
 }
 
 .nbr-block-h2 {
@@ -23,13 +26,13 @@ main {
 }
 
 .nbr-inline-code {
-  @apply text-pink-500 text-sm px-2 py-1 font-normal bg-gray-100 rounded break-words;
+  @apply break-words rounded bg-gray-100 px-2 py-1 text-sm font-normal text-pink-500;
 }
 .nbr-caption {
   @apply text-inherit opacity-70;
 }
 .nbr-link {
-  @apply text-inherit	no-underline border-b border-solid border-gray-700 opacity-70;
+  @apply border-b	border-solid border-gray-700 text-inherit no-underline opacity-70;
 }
 .nbr-block-quote {
   @apply border-l-4 border-solid border-gray-700 px-4 py-2;
@@ -46,21 +49,21 @@ main {
   @apply p-5 !important;
 }
 .nbr-block-callout {
-  @apply bg-gray-100 pr-6 py-5 pl-4 rounded flex;
+  @apply flex rounded bg-gray-100 py-5 pr-6 pl-4;
 }
 .nbr-block-callout .nbr-icon {
-  @apply min-w-min w-4 relative top-0.5;
+  @apply relative top-0.5 w-4 min-w-min;
 }
 .nbr-block-callout .nbr-callout {
-  @apply overflow-hidden w-full;
+  @apply w-full overflow-hidden;
   -webkit-margin-start: 8px;
   margin-inline-start: 8px;
 }
 .nbr-block-ul {
-  @apply pl-4 list-disc;
+  @apply list-disc pl-4;
 }
 .nbr-block-ol {
-  @apply pl-4 list-decimal;
+  @apply list-decimal pl-4;
 }
 /* Add margin-bottom for each block */
 .nbr-blocks > div {

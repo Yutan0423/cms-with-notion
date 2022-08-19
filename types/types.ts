@@ -2,8 +2,20 @@ import { ParsedUrlQuery } from 'querystring';
 import { ReactNode } from 'react';
 import { BlockType } from 'notion-block-renderer';
 
+export type AuthForm = {
+  email: string;
+  password: string;
+};
+
+export type SettingForm = {
+  nickName: string;
+  notionKey: string;
+  notionDatabaseId: string;
+};
+
 export type LayoutProps = {
   children: ReactNode;
+  title: string;
 };
 
 export type PageProps = {

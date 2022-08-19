@@ -14,12 +14,12 @@ export const Card: FC<CardProps> = ({ page }) => {
   return (
     <Link href={`/articles/${path}`}>
       <a className="flex justify-center ">
-        <div className="max-w-sm rounded overflow-hidden shadow-lg w-full my-4 md:my-0 content-between grid">
+        <div className="my-4 grid w-full max-w-sm content-between overflow-hidden rounded shadow-lg md:my-0">
           {/* image */}
           <div>
             {' '}
             <Image
-              className="static w-full h-auto"
+              className="static h-auto w-full"
               src={getCover(page.cover)}
               alt=""
               objectFit="cover"
@@ -30,23 +30,23 @@ export const Card: FC<CardProps> = ({ page }) => {
           </div>
 
           {/* title & date*/}
-          <div className="px-6 pt-4 ">
-            <h2 className="text-base font-medium mb-3 ">
+          <div className="px-6 pt-4">
+            <h2 className="mb-3 text-base font-medium">
               {getText(page.properties.name.title)}
             </h2>
-            <p className="text-gray-700 text-xs">
+            <p className="text-xs text-gray-700">
               {getDate(page.properties.published.date)}
             </p>
           </div>
 
           {/* tag */}
-          <div className="px-6 pb-4 ">
+          <div className="px-6 pb-4">
             {getMultiSelect(page.properties.tags.multi_select).map(
               (tag, key) => {
                 return (
                   <span
                     key={key}
-                    className={`text-sm px-2 py-1 font-normal bg-purple-200 rounded-lg break-words mr-2 mb-2`}
+                    className={`mr-2 mb-2 break-words rounded-lg bg-purple-400 px-2 py-1 text-sm font-normal text-white`}
                   >
                     {`#${tag}`}
                   </span>

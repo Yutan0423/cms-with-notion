@@ -4,9 +4,9 @@ import { siteConfig } from '../site.config';
 
 const Footer = () => {
   return (
-    <footer className="text-center bg-gray-900 text-white w-screen block">
-      <div className="container px-6 pt-6 flex flex-col items-center max-w-2xl w-full mx-auto">
-        <div className="flex justify-center mb-6 text-white">
+    <footer className="block w-screen bg-gray-900 text-center text-white">
+      <div className="container mx-auto flex w-full max-w-2xl flex-col items-center px-6 pt-6">
+        <div className="mb-6 flex justify-center text-white">
           {/* Twitter */}
           {siteConfig.twitterUrl && (
             <a href={siteConfig.twitterUrl}>
@@ -15,7 +15,7 @@ const Footer = () => {
                 focusable="false"
                 data-prefix="fab"
                 data-icon="twitter"
-                className="w-6 h-full mx-4"
+                className="mx-4 h-full w-6"
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
@@ -35,7 +35,7 @@ const Footer = () => {
                 focusable="false"
                 data-prefix="fab"
                 data-icon="instagram"
-                className="w-6 h-full mx-4"
+                className="mx-4 h-full w-6"
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512"
@@ -55,7 +55,7 @@ const Footer = () => {
                 focusable="false"
                 data-prefix="fab"
                 data-icon="github"
-                className="w-6 h-full mx-4"
+                className="mx-4 h-full w-6"
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 496 512"
@@ -71,7 +71,7 @@ const Footer = () => {
           {siteConfig.linkedinUrl && (
             <a href={siteConfig.linkedinUrl}>
               <svg
-                className="w-6 h-full mx-4 text-white-500 fill-current"
+                className="text-white-500 mx-4 h-full w-6 fill-current"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512"
               >
@@ -81,9 +81,9 @@ const Footer = () => {
           )}
         </div>
         {/* copyright */}
-        <div className="text-center p-4 ">
+        <div className="p-4 text-center ">
           <Link href="/">
-            <a className="text-whitehite">© {siteConfig.title}</a>
+            <a className="text-whitehite">©2022 {siteConfig.title}</a>
           </Link>
         </div>
       </div>

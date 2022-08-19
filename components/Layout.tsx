@@ -1,14 +1,18 @@
+import Head from 'next/head';
 import React, { FC } from 'react';
 import { LayoutProps } from '../types/types';
 import Footer from './Footer';
 import Navbar from './Navbar';
 
-const Layout: FC<LayoutProps> = ({ children }) => {
+const Layout: FC<LayoutProps> = ({ children, title = 'Notion Blog' }) => {
   return (
     <div className="relative overflow-hidden">
-      <div className="flex flex-col items-center max-w-2xl w-full mx-auto">
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center">
         <Navbar />
-        <main className="w-full pb-12 px-4">{children}</main>
+        <main className="w-full px-4 pb-12">{children}</main>
         <Footer />
       </div>
     </div>

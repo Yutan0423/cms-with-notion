@@ -5,10 +5,10 @@ import BreadCrumb from './BreadCrumb';
 
 const Navbar = () => {
   return (
-    <nav className="relative w-screen flex flex-wrap items-center justify-between py-3 bg-gray-900 text-white hover:text-gray-200 navbar navbar-expand-lg navbar-light">
-      <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+    <nav className="navbar navbar-expand-lg navbar-light relative flex w-screen flex-wrap items-center justify-between bg-gray-900 py-3 text-white hover:text-gray-200">
+      <div className="container-fluid flex w-full flex-wrap items-center justify-between px-6">
         <div
-          className="bg-grey-light rounded-md w-full"
+          className="bg-grey-light flex w-full rounded-md"
           aria-label="breadcrumb"
         >
           <Link href="/">
@@ -16,6 +16,11 @@ const Navbar = () => {
           </Link>
           {/* Breadcrumb */}
           <BreadCrumb />
+          <div className="ml-auto flex">
+            <Link href="/admin">
+              <a className="text-white hover:text-gray-200">管理ツール</a>
+            </Link>
+          </div>
         </div>
       </div>
     </nav>
