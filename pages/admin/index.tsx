@@ -18,6 +18,7 @@ import {
 } from '@mantine/core';
 import { IconLogin } from '@tabler/icons';
 import { useQueryUser } from '../../hooks/useQueryUser';
+import { fetchUserInfo } from '../../utils/userInfo';
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -58,16 +59,17 @@ const Admin: FC = () => {
       setError(err.response.data.message);
     }
   };
+  const [userInfo, setUserInfo] = useState({});
+  const getUserInfo = async () => {
+    return await fetchUserInfo();
+  };
 
   useEffect(() => {
-    // if (user?.userInfo) {
-    //   console.log('ログイン済みのため、HOMEへリダイレクト');
-    //   router.push('/admin/home');
-    // }
+    setUserInfo(getUserInfo);
   }, []);
 
   return (
-    <Layout title="Auth">
+    <Layout title="Auth" userInfo={userInfo}>
       <UserGroupIcon className="h-16 w-16 text-blue-500" />
       {error && (
         <Alert

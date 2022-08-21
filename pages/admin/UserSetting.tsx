@@ -1,9 +1,5 @@
 import { LogoutIcon } from '@heroicons/react/outline';
-import {
-  CogIcon,
-  ExclamationCircleIcon,
-  UserGroupIcon,
-} from '@heroicons/react/solid';
+import { ExclamationCircleIcon, UserGroupIcon } from '@heroicons/react/solid';
 import { Alert, Button, Group, TextInput } from '@mantine/core';
 import { useForm, yupResolver } from '@mantine/form';
 import { IconSettings } from '@tabler/icons';
