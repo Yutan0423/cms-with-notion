@@ -16,6 +16,7 @@ import Layout from '../../components/Layout';
 import * as Yup from 'yup';
 import { UserSettingForm } from '../../types/types';
 import { useQueryUser } from '../../hooks/useQueryUser';
+import { fetchUserInfo } from '../../utils/userInfo';
 
 const UserSetting: FC = () => {
   const router = useRouter();
@@ -41,6 +42,14 @@ const UserSetting: FC = () => {
       linkedinUrl: user.userInfo ? user.userInfo.linkedinUrl : '',
     },
   });
+  const [userInfo, setUserInfo] = useState({});
+  const getUserInfo = async () => {
+    return await fetchUserInfo();
+  };
+
+  useEffect(() => {
+    setUserInfo(getUserInfo);
+  }, []);
 
   const handleSubmit = async () => {
     try {
@@ -71,7 +80,7 @@ const UserSetting: FC = () => {
     }
   };
   return (
-    <Layout title="Auth">
+    <Layout title="Auth" userInfo={userInfo}>
       <UserGroupIcon className="h-16 w-16 text-blue-500" />
       {error && (
         <Alert

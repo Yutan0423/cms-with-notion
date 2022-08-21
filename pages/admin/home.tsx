@@ -5,9 +5,10 @@ import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
 import { UserInfo } from '../../components/UserInfo';
+import { fetchUserInfo } from '../../utils/userInfo';
 
 const Home: FC = () => {
   const router = useRouter();
@@ -17,8 +18,17 @@ const Home: FC = () => {
     await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`);
     router.push('/');
   };
+  const [userInfo, setUserInfo] = useState({});
+  const getUserInfo = async () => {
+    return await fetchUserInfo();
+  };
+
+  useEffect(() => {
+    setUserInfo(getUserInfo);
+  }, []);
+
   return (
-    <Layout title="管理画面">
+    <Layout title="管理画面" userInfo={userInfo}>
       <h3 className="mt-8">ユーザー情報</h3>
       <div className="my-6">
         <UserInfo />
