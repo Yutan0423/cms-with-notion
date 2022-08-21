@@ -4,20 +4,24 @@ import { IndexProps } from '../types/types';
 import { fetchPages } from '../utils/notion';
 import Card from '../components/Card';
 import Layout from '../components/Layout';
+import { fetchUserInfo } from '../utils/userInfo';
+import { userInfo } from 'os';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { results } = await fetchPages({});
+  const { results }: any = await fetchPages({});
+  const userInfo = await fetchUserInfo();
   return {
     props: {
       pages: results ? results : [],
+      userInfo: userInfo ? userInfo : {},
     },
     revalidate: 10,
   };
 };
 
-const Home: NextPage<IndexProps> = ({ pages }) => {
+const Home: NextPage<IndexProps> = ({ pages, userInfo }) => {
   return (
-    <Layout title="">
+    <Layout title="" userInfo={userInfo}>
       <div className="pt-12">
         <h1 className="mb-8 text-5xl">{siteConfig.title}</h1>
         <div className="my-12 mt-10 grid w-full md:grid-cols-3 md:gap-6">

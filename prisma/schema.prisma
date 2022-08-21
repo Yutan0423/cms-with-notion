@@ -13,18 +13,12 @@ model UserInfo {
   updatedAt          DateTime
   notionKey          String
   notionDatabaseId String
+  twitterUrl String?
+  instagramUrl String?
+  githubUrl String?
+  linkedinUrl String?
   userId             Int
   User               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model Task {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime
-  title       String
-  description String?
-  userId      Int
-  User        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
@@ -33,9 +27,8 @@ model User {
   updatedAt  DateTime
   email      String      @unique
   password   String
-  nickName   String
+  nickname   String?
   UserInfo UserInfo[]
-  Task       Task[]
 }
 
 model CmsSetting {

@@ -29,7 +29,7 @@ const Home: FC = () => {
           color="blue"
           className="mr-8"
         >
-          <Link href="/admin/setting">Notion APIの設定はこちら</Link>
+          <Link href="/admin/usersetting">Notion APIの設定はこちら</Link>
         </Button>
         <Button
           leftIcon={
@@ -37,7 +37,7 @@ const Home: FC = () => {
           }
           color="blue"
         >
-          <Link href="/admin/setting">CMSに表示するユーザーを選択</Link>
+          <Link href="/admin/cmssetting">CMSに表示するユーザーを選択</Link>
         </Button>
       </Group>
       <Button

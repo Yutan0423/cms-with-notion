@@ -7,15 +7,24 @@ export type AuthForm = {
   password: string;
 };
 
-export type SettingForm = {
-  nickName: string;
+export type CmsSettingForm = {
+  userId: number;
+};
+
+export type UserSettingForm = {
+  nickname: string;
   notionKey: string;
   notionDatabaseId: string;
+  twitterUrl: string;
+  instagramUrl: string;
+  githubUrl: string;
+  linkedinUrl: string;
 };
 
 export type LayoutProps = {
   children: ReactNode;
   title: string;
+  userInfo: {};
 };
 
 export type PageProps = {
@@ -33,10 +42,11 @@ export type CardProps = { page: PageType };
 export type ArticleProps = {
   page: PageType;
   blocks: BlockType[];
+  userInfo: {};
 };
 export type ArticleMetaProps = CardProps;
 
-export type IndexProps = { pages: PageType[] };
+export type IndexProps = { pages: PageType[]; userInfo: {} };
 
 export type TagProps = IndexProps & { tag: string };
 

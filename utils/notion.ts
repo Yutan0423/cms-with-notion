@@ -1,7 +1,6 @@
 import { Client } from '@notionhq/client';
-
-const notion = new Client({ auth: process.env.NOTION_KEY as string });
-const DATABASE_ID = process.env.NOTION_DATABASE_ID as string;
+import { CmsSetting, UserInfo } from '@prisma/client';
+import axios from 'axios';
 
 export const fetchPages = async ({
   slug,
@@ -10,6 +9,23 @@ export const fetchPages = async ({
   slug?: string;
   tag?: string;
 }) => {
+  // ブログに表示するユーザーのidを取得
+  const resUser = await axios.get<Pick<CmsSetting, 'settingValue'>>(
+    `${process.env.NEXT_PUBLIC_API_URL}/cms/user`,
+  );
+  const userId = Number(resUser.data.settingValue);
+  // ブログに表示するユーザーのnoitonDataを取得
+  const resInfo = await axios.get<
+    Pick<UserInfo, 'notionKey' | 'notionDatabaseId'>
+  >(`${process.env.NEXT_PUBLIC_API_URL}/cms/info`, {
+    data: {
+      cmsUserId: userId,
+    },
+  });
+  const notionKey = resInfo.data.notionKey as string;
+  const notionDatabaseId = resInfo.data.notionDatabaseId as string;
+  const notion = new Client({ auth: notionKey });
+
   const and: any = [
     {
       property: 'isPublic',
@@ -24,7 +40,6 @@ export const fetchPages = async ({
       },
     },
   ];
-
   if (slug) {
     and.push({
       property: 'slug',
@@ -33,7 +48,6 @@ export const fetchPages = async ({
       },
     });
   }
-
   if (tag) {
     and.push({
       property: 'tags',
@@ -44,7 +58,7 @@ export const fetchPages = async ({
   }
 
   return await notion.databases.query({
-    database_id: DATABASE_ID,
+    database_id: notionDatabaseId,
     filter: {
       and: and,
     },
@@ -58,5 +72,22 @@ export const fetchPages = async ({
 };
 
 export const fetchBlocksByPageId = async (pageId: string) => {
+  // ブログに表示するユーザーのidを取得
+  const resUser = await axios.get<Pick<CmsSetting, 'settingValue'>>(
+    `${process.env.NEXT_PUBLIC_API_URL}/cms/user`,
+  );
+  const userId = Number(resUser.data.settingValue);
+  // ブログに表示するユーザーのnoitonDataを取得
+  const { data } = await axios.get<UserInfo>(
+    `${process.env.NEXT_PUBLIC_API_URL}/cms/info`,
+    {
+      data: {
+        cmsUserId: userId,
+      },
+    },
+  );
+  const notionKey = data.notionKey as string;
+  const notion = new Client({ auth: notionKey });
+
   return await notion.blocks.children.list({ block_id: pageId });
 };

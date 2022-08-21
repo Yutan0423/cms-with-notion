@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { siteConfig } from '../site.config';
+import { GetStaticProps } from 'next';
+import { fetchUserInfo } from '../utils/userInfo';
 
-const Footer = () => {
+const Footer: FC<any> = ({ userInfo }) => {
   return (
     <footer className="block w-screen bg-gray-900 text-center text-white">
       <div className="container mx-auto flex w-full max-w-2xl flex-col items-center px-6 pt-6">
         <div className="mb-6 flex justify-center text-white">
           {/* Twitter */}
-          {siteConfig.twitterUrl && (
-            <a href={siteConfig.twitterUrl}>
+          {userInfo?.twitterUrl && (
+            <a href={userInfo?.twitterUrl}>
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -28,8 +30,8 @@ const Footer = () => {
             </a>
           )}
           {/* Instagram */}
-          {siteConfig.instagramUrl && (
-            <a href={siteConfig.instagramUrl}>
+          {userInfo?.instagramUrl && (
+            <a href={userInfo?.instagramUrl}>
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -48,8 +50,8 @@ const Footer = () => {
             </a>
           )}
           {/* Github */}
-          {siteConfig.githubUrl && (
-            <a href={siteConfig.githubUrl}>
+          {userInfo?.githubUrl && (
+            <a href={userInfo?.githubUrl}>
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -68,8 +70,8 @@ const Footer = () => {
             </a>
           )}
           {/* Linkedin */}
-          {siteConfig.linkedinUrl && (
-            <a href={siteConfig.linkedinUrl}>
+          {userInfo?.linkedinUrl && (
+            <a href={userInfo?.linkedinUrl}>
               <svg
                 className="text-white-500 mx-4 h-full w-6 fill-current"
                 xmlns="http://www.w3.org/2000/svg"

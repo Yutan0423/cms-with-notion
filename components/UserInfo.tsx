@@ -9,7 +9,7 @@ export const UserInfo = () => {
       <div className="grid grid-cols-3 gap-4">
         {/* published */}
         <div className="col-span-1">ニックネーム</div>
-        <div className="col-span-2">{user?.userInfo.nickName}</div>
+        <div className="col-span-2">{user.nickname}</div>
 
         {/* author */}
         <div className="col-span-1">メールアドレス</div>
@@ -17,11 +17,27 @@ export const UserInfo = () => {
 
         {/* tags */}
         <div className="col-span-1">Notion Key</div>
-        <div className="col-span-2">{user?.userInfo.notionKey}</div>
+        <div className="col-span-2">{user?.userInfo?.notionKey}</div>
 
         {/* tags */}
         <div className="col-span-1">Notion Database ID</div>
-        <div className="col-span-2">{user?.userInfo.notionDatabaseId}</div>
+        <div className="col-span-2">{user?.userInfo?.notionDatabaseId}</div>
+
+        {/* tags */}
+        <div className="col-span-1">Twitter URL</div>
+        <div className="col-span-2">{user?.userInfo?.twitterUrl}</div>
+
+        {/* tags */}
+        <div className="col-span-1">Instagram URL</div>
+        <div className="col-span-2">{user?.userInfo?.instagramUrl}</div>
+
+        {/* tags */}
+        <div className="col-span-1">Github URL</div>
+        <div className="col-span-2">{user?.userInfo?.githubUrl}</div>
+
+        {/* tags */}
+        <div className="col-span-1">Linkedin URL</div>
+        <div className="col-span-2">{user?.userInfo?.linkedinUrl}</div>
       </div>
     </div>
   );

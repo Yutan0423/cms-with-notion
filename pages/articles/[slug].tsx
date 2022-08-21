@@ -6,6 +6,7 @@ import { getText } from '../../utils/properties';
 import ArticleMeta from '../../components/ArticleMeta';
 import Layout from '../../components/Layout';
 import NotionBlocks from 'notion-block-renderer';
+import { fetchUserInfo } from '../../utils/userInfo';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { results } = await fetchPages({});
@@ -26,6 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { slug } = ctx.params as Params;
   const { results } = await fetchPages({ slug: slug });
+  const userInfo = await fetchUserInfo();
   const page = results[0];
   const pageId = page.id;
   const { results: blocks } = await fetchBlocksByPageId(pageId);
@@ -34,14 +36,15 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     props: {
       page: page,
       blocks: blocks,
+      userInfo: userInfo,
     },
     revalidate: 10,
   };
 };
 
-const Article: NextPage<ArticleProps> = ({ page, blocks }) => {
+const Article: NextPage<ArticleProps> = ({ page, blocks, userInfo }) => {
   return (
-    <Layout>
+    <Layout title="" userInfo={userInfo}>
       <article className="w-full">
         {/* meta section */}
         <div className="my-12">
@@ -49,11 +52,6 @@ const Article: NextPage<ArticleProps> = ({ page, blocks }) => {
         </div>
 
         {/* article */}
-        {/* <div className="my-12">
-          {blocks.map((block, key) => (
-            <Block block={block} />
-          ))}
-        </div> */}
         <div className="my-12">
           <NotionBlocks blocks={blocks} isCodeHighlighter={true} />
         </div>

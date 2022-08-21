@@ -4,6 +4,7 @@ import { fetchPages } from '../../utils/notion';
 import { getMultiSelect } from '../../utils/properties';
 import Card from '../../components/Card';
 import Layout from '../../components/Layout';
+import { fetchUserInfo } from '../../utils/userInfo';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { results }: { results: Record<string, any>[] } = await fetchPages({});
@@ -32,21 +33,23 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { tag } = ctx.params as Params;
   const { results } = await fetchPages({ tag: tag });
+  const userInfo = await fetchUserInfo();
   return {
     props: {
       pages: results ? results : [],
       tag: tag,
+      userInfo: userInfo ? userInfo : {},
     },
     revalidate: 10,
   };
 };
 
-const Tag: NextPage<TagProps> = ({ pages, tag }) => {
+const Tag: NextPage<TagProps> = ({ pages, tag, userInfo }) => {
   return (
-    <Layout>
+    <Layout title="" userInfo={userInfo}>
       <div className="pt-12">
-        <h1 className="text-5xl mb-8">{`${tag}`}</h1>
-        <div className="grid md:gap-6 mt-10 md:grid-cols-2 w-full my-12">
+        <h1 className="mb-8 text-5xl">{`${tag}`}</h1>
+        <div className="my-12 mt-10 grid w-full md:grid-cols-2 md:gap-6">
           {/* Card */}
           {pages.map((page, key) => (
             <Card key={key} page={page} />

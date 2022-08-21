@@ -14,7 +14,7 @@ import { useRouter } from 'next/router';
 import React, { FC, useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
 import * as Yup from 'yup';
-import { SettingForm } from '../../types/types';
+import { UserSettingForm } from '../../types/types';
 import { useQueryUser } from '../../hooks/useQueryUser';
 
 const UserSetting: FC = () => {
@@ -23,34 +23,46 @@ const UserSetting: FC = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [error, setError] = useState('');
   const schema = Yup.object().shape({
-    nickName: Yup.string().required('ニックネームが入力されていません'),
+    nickname: Yup.string().required('ニックネームが入力されていません'),
     notionKey: Yup.string().required('Notion Keyが入力されていません'),
     notionDatabaseId: Yup.string().required(
       'Notion Database IDが入力されていません',
     ),
   });
-  const form = useForm<SettingForm>({
+  const form = useForm<UserSettingForm>({
     validate: yupResolver(schema),
     initialValues: {
-      nickName: user.userInfo ? user.userInfo.nickName : '',
+      nickname: user.userInfo ? user.userInfo.nickname : '',
       notionKey: user.userInfo ? user.userInfo.notionKey : '',
       notionDatabaseId: user.userInfo ? user.userInfo.notionDatabaseId : '',
+      twitterUrl: user.userInfo ? user.userInfo.twitterUrl : '',
+      instagramUrl: user.userInfo ? user.userInfo.instagramUrl : '',
+      githubUrl: user.userInfo ? user.userInfo.githubUrl : '',
+      linkedinUrl: user.userInfo ? user.userInfo.linkedinUrl : '',
     },
   });
 
   const handleSubmit = async () => {
     try {
-      if (user.userInfo) {
+      if (user.nickname) {
         await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/user/update`, {
-          nickName: form.values.nickName,
+          nickname: form.values.nickname,
           notionKey: form.values.notionKey,
           notionDatabaseId: form.values.notionDatabaseId,
+          twitterUrl: form.values.twitterUrl,
+          instagramUrl: form.values.instagramUrl,
+          githubUrl: form.values.githubUrl,
+          linkedinUrl: form.values.linkedinUrl,
         });
       } else {
         await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/create`, {
-          nickName: form.values.nickName,
+          nickname: form.values.nickname,
           notionKey: form.values.notionKey,
           notionDatabaseId: form.values.notionDatabaseId,
+          twitterUrl: form.values.twitterUrl,
+          instagramUrl: form.values.instagramUrl,
+          githubUrl: form.values.githubUrl,
+          linkedinUrl: form.values.linkedinUrl,
         });
       }
       router.push('/admin/home');
@@ -76,10 +88,10 @@ const UserSetting: FC = () => {
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <TextInput
           mt="md"
-          id="nickName"
+          id="nickname"
           label="ニックネーム"
           placeholder="山田 太郎"
-          {...form.getInputProps('nickName')}
+          {...form.getInputProps('nickname')}
         />
         <TextInput
           mt="md"
@@ -94,6 +106,34 @@ const UserSetting: FC = () => {
           label="Notion Database ID"
           placeholder="Notion Database ID"
           {...form.getInputProps('notionDatabaseId')}
+        />
+        <TextInput
+          mt="md"
+          id="twitterUrl"
+          label="Twitter URL"
+          placeholder="URLをここにペースト"
+          {...form.getInputProps('twitterUrl')}
+        />
+        <TextInput
+          mt="md"
+          id="instagramUrl"
+          label="instagramUrl URL"
+          placeholder="URLをここにペースト"
+          {...form.getInputProps('instagramUrl')}
+        />
+        <TextInput
+          mt="md"
+          id="githubUrl"
+          label="Github URL"
+          placeholder="URLをここにペースト"
+          {...form.getInputProps('githubUrl')}
+        />
+        <TextInput
+          mt="md"
+          id="linkedinUrl"
+          label="LinkedinUrl URL"
+          placeholder="URLをここにペースト"
+          {...form.getInputProps('linkedinUrl')}
         />
         <Group className="mt-6">
           <Button
