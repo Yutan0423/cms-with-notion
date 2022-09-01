@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "11.10.0",
     "@emotion/server": "11.10.0",
     "@heroicons/react": "1.0.6",
     "@mantine/core": "5.0.2",

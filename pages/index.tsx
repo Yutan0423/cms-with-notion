@@ -5,7 +5,6 @@ import { fetchPages } from '../utils/notion';
 import Card from '../components/Card';
 import Layout from '../components/Layout';
 import { fetchUserInfo } from '../utils/userInfo';
-import { userInfo } from 'os';
 
 export const getStaticProps: GetStaticProps = async () => {
   const { results }: any = await fetchPages({});
