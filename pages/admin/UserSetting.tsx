@@ -72,7 +72,7 @@ const UserSetting: FC = () => {
       }
       router.push('/admin/home');
     } catch (err: any) {
-      setError(err.response.data.message);
+      // setError(err.response.data.message);
     }
   };
   return (

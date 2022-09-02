@@ -56,7 +56,7 @@ const Admin: FC = () => {
       form.reset();
       router.push('/admin/home');
     } catch (err: any) {
-      setError(err.response.data.message);
+      // setError(err.response.data.message);
     }
   };
   const [userInfo, setUserInfo] = useState({});
