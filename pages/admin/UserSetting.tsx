@@ -29,13 +29,13 @@ const UserSetting: FC = () => {
   const form = useForm<UserSettingForm>({
     validate: yupResolver(schema),
     initialValues: {
-      nickname: user.userInfo ? user.userInfo.nickname : '',
-      notionKey: user.userInfo ? user.userInfo.notionKey : '',
-      notionDatabaseId: user.userInfo ? user.userInfo.notionDatabaseId : '',
-      twitterUrl: user.userInfo ? user.userInfo.twitterUrl : '',
-      instagramUrl: user.userInfo ? user.userInfo.instagramUrl : '',
-      githubUrl: user.userInfo ? user.userInfo.githubUrl : '',
-      linkedinUrl: user.userInfo ? user.userInfo.linkedinUrl : '',
+      nickname: user?.userInfo ? user.userInfo.nickname : '',
+      notionKey: user?.userInfo ? user.userInfo.notionKey : '',
+      notionDatabaseId: user?.userInfo ? user.userInfo.notionDatabaseId : '',
+      twitterUrl: user?.userInfo ? user.userInfo.twitterUrl : '',
+      instagramUrl: user?.userInfo ? user.userInfo.instagramUrl : '',
+      githubUrl: user?.userInfo ? user.userInfo.githubUrl : '',
+      linkedinUrl: user?.userInfo ? user.userInfo.linkedinUrl : '',
     },
   });
   const [userInfo, setUserInfo] = useState({});
