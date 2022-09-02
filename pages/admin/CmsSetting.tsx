@@ -22,19 +22,6 @@ import { setDefaultResultOrder } from 'dns';
 import { User } from '@prisma/client';
 import { fetchUserInfo } from '../../utils/userInfo';
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const { data } = await axios.get(
-//     `${process.env.NEXT_PUBLIC_API_URL}/user/all`,
-//   );
-//   console.log(data);
-//   return {
-//     props: {
-//       users: data ? data : [],
-//     },
-//     revalidate: 10,
-//   };
-// };
-
 const CmsSetting: FC = () => {
   const router = useRouter();
   const [userOptions, setUserOptions] = useState<any>([{}]);
