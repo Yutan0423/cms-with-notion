@@ -1,5 +1,9 @@
 import { LogoutIcon } from '@heroicons/react/outline';
-import { ExclamationCircleIcon, UserGroupIcon } from '@heroicons/react/solid';
+import {
+  ChevronDoubleLeftIcon,
+  ExclamationCircleIcon,
+  UserGroupIcon,
+} from '@heroicons/react/solid';
 import { Alert, Button, Group, TextInput } from '@mantine/core';
 import { useForm, yupResolver } from '@mantine/form';
 import { IconSettings } from '@tabler/icons';
@@ -49,6 +53,9 @@ const UserSetting: FC = () => {
   const handleSubmit = async () => {
     try {
       if (user?.userInfo) {
+        console.log(form.values.nickname);
+        console.log(form.values.twitterUrl);
+        console.log(form.values.notionKey);
         await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/user/update`, {
           nickname: form.values.nickname,
           notionKey: form.values.notionKey,

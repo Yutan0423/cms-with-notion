@@ -25,7 +25,7 @@ export const fetchPages = async ({
   const notionKey = resInfo.data.notionKey as string;
   const notionDatabaseId = resInfo.data.notionDatabaseId as string;
   const notion = new Client({ auth: notionKey });
-
+  console.log(notion);
   const and: any = [
     {
       property: 'isPublic',
