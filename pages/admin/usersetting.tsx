@@ -48,7 +48,7 @@ const UserSetting: FC = () => {
 
   const handleSubmit = async () => {
     try {
-      if (user.nickname) {
+      if (user?.userInfo) {
         await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/user/update`, {
           nickname: form.values.nickname,
           notionKey: form.values.notionKey,
