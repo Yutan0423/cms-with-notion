@@ -29,7 +29,7 @@ const UserSetting: FC = () => {
   const form = useForm<UserSettingForm>({
     validate: yupResolver(schema),
     initialValues: {
-      nickname: user?.userInfo ? user.userInfo.nickname : '',
+      nickname: user ? user.nickname : '',
       notionKey: user?.userInfo ? user.userInfo.notionKey : '',
       notionDatabaseId: user?.userInfo ? user.userInfo.notionDatabaseId : '',
       twitterUrl: user?.userInfo ? user.userInfo.twitterUrl : '',
