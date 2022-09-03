@@ -17,7 +17,6 @@ import { fetchUserInfo } from '../../utils/userInfo';
 const UserSetting: FC = () => {
   const router = useRouter();
   const { data: user, status } = useQueryUser();
-  const [isLogin, setIsLogin] = useState(false);
   const [error, setError] = useState('');
   const schema = Yup.object().shape({
     nickname: Yup.string().required('ニックネームが入力されていません'),
