@@ -53,7 +53,7 @@ const UserSetting: FC = () => {
   const handleSubmit = async () => {
     try {
       if (user?.userInfo) {
-        await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/user/update`, {
+        const body = {
           nickname: form.values.nickname,
           notionKey: form.values.notionKey,
           notionDatabaseId: form.values.notionDatabaseId,
@@ -61,7 +61,13 @@ const UserSetting: FC = () => {
           instagramUrl: form.values.instagramUrl,
           githubUrl: form.values.githubUrl,
           linkedinUrl: form.values.linkedinUrl,
-        });
+        };
+
+        console.log(body);
+        await axios.patch(
+          `${process.env.NEXT_PUBLIC_API_URL}/user/update`,
+          body,
+        );
       } else {
         await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/create`, {
           nickname: form.values.nickname,
