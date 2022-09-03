@@ -53,9 +53,6 @@ const UserSetting: FC = () => {
   const handleSubmit = async () => {
     try {
       if (user?.userInfo) {
-        console.log(form.values.nickname);
-        console.log(form.values.twitterUrl);
-        console.log(form.values.notionKey);
         await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/user/update`, {
           nickname: form.values.nickname,
           notionKey: form.values.notionKey,

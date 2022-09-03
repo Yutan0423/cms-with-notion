@@ -49,10 +49,12 @@ const Admin: FC = () => {
           password: form.values.password,
         });
       }
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
-        email: form.values.email,
-        password: form.values.password,
-      });
+      await axios
+        .post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+          email: form.values.email,
+          password: form.values.password,
+        })
+        .then((v) => console.log(v.data));
       form.reset();
       router.push('/admin/home');
     } catch (err: any) {
