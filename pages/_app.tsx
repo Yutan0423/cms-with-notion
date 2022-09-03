@@ -1,11 +1,11 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import { MantineProvider } from '@mantine/core'
-import Head from 'next/head'
-import { useEffect } from 'react'
-import axios from 'axios'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import { MantineProvider } from '@mantine/core';
+import Head from 'next/head';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 // function MyApp({ Component, pageProps }: AppProps) {
 //   return <Component {...pageProps} />
@@ -18,21 +18,22 @@ const queryClient = new QueryClient({
       refetchOnWindowFocus: false,
     },
   },
-})
+});
 
 function App({ Component, pageProps }: AppProps) {
   // cookieとのやりとりをする際にtrueにする必要がある
-  axios.defaults.withCredentials = true
+  axios.defaults.withCredentials = true;
 
   useEffect(() => {
     const getCsrfToken = async () => {
       const { data } = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/auth/csrf`,
-      )
-      axios.defaults.headers.common['csrf-token'] = data.csrfToken
-    }
-    getCsrfToken()
-  }, [])
+      );
+      console.log(data.csrfToken);
+      axios.defaults.headers.common['csrf-token'] = data.csrfToken;
+    };
+    getCsrfToken();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -49,7 +50,7 @@ function App({ Component, pageProps }: AppProps) {
       </MantineProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
-  )
+  );
 }
 
-export default App
+export default App;
